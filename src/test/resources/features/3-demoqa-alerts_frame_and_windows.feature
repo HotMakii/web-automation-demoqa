@@ -5,6 +5,7 @@ Feature: DemoQA - Alerts, Frame And Windows page
     And   I click "Alerts frame and windows"
     Then  I am on the "Alerts frame and windows" page
 
+
   Scenario: Browser windows - new tab
     When I click "Browser Windows option"
     And  I click "New tab button"
