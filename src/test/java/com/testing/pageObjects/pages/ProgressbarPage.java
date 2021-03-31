@@ -10,9 +10,9 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("/progress-bar")
 public class ProgressbarPage extends WidgetsPage{
   // Locators ----------------------------------------------------------------------------------------------------------
-  public static By PROGRESS_BAR_TITLE;
-  public static By START_STOP_BUTTON;
-  public static By PROGRESS_BAR;
+  public static By PROGRESS_BAR_TITLE =text("Progress Bar");
+  public static By START_STOP_BUTTON =css("button[id='startStopButton']");
+  public static By PROGRESS_BAR =css("div[role='progressbar']");
   // Public methods ----------------------------------------------------------------------------------------------------
   public void waitForPageToLoad() {
     getElement(PROGRESS_BAR_TITLE).waitUntilPresent();
@@ -22,14 +22,24 @@ public class ProgressbarPage extends WidgetsPage{
   public void setElementValueTo(String elementName, String value){
     switch(elementName){
       case "PROGRESS_BAR":
-        getElement(START_STOP_BUTTON).click();
+      getElement(START_STOP_BUTTON).click();
 
         // The expected value to reach
         int expectedValue = Integer.valueOf(value);
         int currentBarValue = 0;
+        
+        while(true){
+          currentBarValue = Integer.valueOf(getElement(PROGRESS_BAR).getAttribute("aria-valuenow"));
+
+          if(currentBarValue == expectedValue){
+          
+            getElement(START_STOP_BUTTON).click();
+            break;
+        }
+      }
 
         // TODO: Implement a logic that would stop the progress bar when the required value is reached
-        currentBarValue = Integer.valueOf(getElement(PROGRESS_BAR).getAttribute("aria-valuenow"));
+       
 
         break;
       default:

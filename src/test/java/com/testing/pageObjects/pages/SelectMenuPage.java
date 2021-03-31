@@ -12,17 +12,17 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("/select-menu")
 public class SelectMenuPage extends WidgetsPage{
   // Locators ----------------------------------------------------------------------------------------------------------
-  public static By SELECT_MENU_TITLE;
-  public static By SELECT_VALUE;
-  public static By SELECT_ONE;
-  public static By OLD_STYLE_SELECT_MENU;
-  public static By MULTISELECT_DROP_DOWN;
+  public static By SELECT_MENU_TITLE =text("Select Menu");
+  public static By SELECT_VALUE =css("div[id=withOptGroup]");
+  public static By SELECT_ONE =css("div[id=selectOne]");
+  public static By OLD_STYLE_SELECT_MENU =css("select[id=oldSelectMenu]");
+  public static By MULTISELECT_DROP_DOWN =css("input[id=react-select-4-input]");
   // Field containing selected values. Might need an xpath selector
-  public static By MULTISELECT_DROP_DOWN_VALUES;
-  public static By VOLVO;
-  public static By SAAB;
-  public static By OPEL;
-  public static By AUDI;
+  public static By MULTISELECT_DROP_DOWN_VALUES =xpath("//*[@id='selectMenuContainer']/div[7]/div/div/div/div[1]");
+  public static By VOLVO =xpath("//*[@id='cars']/option[1]");
+  public static By SAAB =xpath("//*[@id='cars']/option[2]");
+  public static By OPEL =xpath("//*[@id='cars']/option[3]");
+  public static By AUDI =xpath("//*[@id='cars']/option[4]");
   // Selector that would allow to get either of given four car brands.
   public static By CAR_MENU_OPTIONS;
   // Public methods ----------------------------------------------------------------------------------------------------
